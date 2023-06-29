@@ -1,8 +1,9 @@
 [workspace]
 resolver = "2"
 members = [
-    "egg_for_alg",
+    "egg_for_math",
     "egg_for_sql",
     "egg_for_cypher",
     "egg_test",
+    "trans_expr",
 ]

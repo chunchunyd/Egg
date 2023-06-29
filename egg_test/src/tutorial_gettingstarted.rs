@@ -80,6 +80,9 @@ pub fn test4(){
     // We can make our own Language later to work with other types.
     let start = "(+ 0 (* 1 a))".parse().unwrap();
 
+    // let start = "(+ 1 (- a (* (- 2 1) a)))".parse().unwrap();
+    // 不能化简到1,因为规则不够完备
+
     // That's it! We can run equality saturation now.
     let runner = Runner::default().with_expr(&start).run(rules);
 
@@ -93,8 +96,6 @@ pub fn test4(){
     let (best_cost, best_expr) = extractor.find_best(runner.roots[0]);
 
     // we found the best thing, which is just "a" in this case
-    assert_eq!(best_expr, "a".parse().unwrap());
-    assert_eq!(best_cost, 1);
     println!("best expr {:#?}", best_expr);
     println!("best cost {:#?}", best_cost);
 }

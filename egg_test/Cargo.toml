@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-egg_for_alg = { path = "../egg_for_alg" }
+egg_for_math = { path = "../egg_for_math" }
 egg_for_sql = { path = "../egg_for_sql" }
 egg_for_cypher = { path = "../egg_for_cypher" }
 egg = "0.9.2"
