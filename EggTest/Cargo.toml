@@ -1,0 +1,11 @@
+[package]
+name = "egg_test"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+egg_for_alg = { path = "../EggForAlg" }
+egg_for_sql = { path = "../EggForSQL" }
+egg_for_cypher = { path = "../EggForCypher" }
