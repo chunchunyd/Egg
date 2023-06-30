@@ -6,4 +6,5 @@ members = [
     "egg_for_cypher",
     "egg_test",
     "trans_expr",
+    "math_official",
 ]

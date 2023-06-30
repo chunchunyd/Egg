@@ -11,7 +11,7 @@ lazy_static! {
 
         rw!("sub-canon"; "(- ?a ?b)" => "(+ ?a (* -1 ?b))"),
         rw!("div-canon"; "(/ ?a ?b)" => "(* ?a (/ 1 ?b))"),
-        // rw!("canon-sub"; "(+ ?a (* -1 ?b))"   => "(- ?a ?b)"),
+        rw!("canon-sub"; "(+ ?a (* -1 ?b))"   => "(- ?a ?b)"),
         // rw!("canon-div"; "(* ?a (pow ?b -1))" => "(/ ?a ?b)" if is_not_zero("?b")),
 
         rw!("zero-add"; "(+ ?a 0)" => "?a"),
@@ -29,8 +29,6 @@ lazy_static! {
 
 
         rw!("recip-mul-div"; "(* ?x (/ 1 ?x))" => "1"),
-        rw!("add-sub"; "(+ ?a (* -1 ?b))" => "(- ?a ?b)"),
-        rw!("sub-add"; "(- ?a ?b)" => "(+ ?a (* -1 ?b))"),
 
 
         // old rules

@@ -3,6 +3,8 @@ mod expr;
 mod analysis;
 mod rules;
 
+use std::fmt::format;
+
 use egg::*;
 use rules::RULES;
 // use trans_expr::{infix_to_prefix_with_bracket, prefix_to_infix}; // more readable
@@ -11,9 +13,10 @@ pub fn optimize_expr(expression: &str) -> String{
     let rules = RULES.as_slice();
     let start = expression.parse().unwrap();
     let runner = Runner::default()
-        .with_explanations_enabled()
+        // .with_explanations_enabled()
         .with_expr(&start)
         .run(rules);
+    let stop_reason = format!("{:?}", runner.stop_reason.unwrap());
     let extractor = Extractor::new(&runner.egraph, AstSize);
     let (best_cost, best_expr) = extractor.find_best(runner.roots[0]);
 
@@ -30,6 +33,7 @@ mod tests {
     fn it_works() {
         // assert_eq!(optimize_expr("(/ 1 0)"), "1");
         // assert_eq!(optimize_expr("(/ 1 2)"), "(/ 1 2)");
+        assert_eq!(optimize_expr("(+ x 0)"), "x");
         assert_eq!(optimize_expr("(/ x 1)"), "x");
         assert_eq!(optimize_expr("(+ a (- b a))"), "b"); 
         assert_eq!(optimize_expr("(+ 1 (- a (* (+ b 1) a)))"), "(- 1 (* a b))");

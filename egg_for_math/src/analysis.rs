@@ -31,6 +31,8 @@ impl Analysis<ArithmeticExpr> for ConstantFolding {
         if let Some(i) = egraph[id].data {
             let added = egraph.add(ArithmeticExpr::Num(i));
             egraph.union(id, added);
+            // to not prune, comment this out
+            egraph[id].nodes.retain(|n| n.is_leaf());
         }
     }
 }
